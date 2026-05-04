@@ -38,22 +38,22 @@
 
 <br/>
 
-## What It Does
+## 🧠 What It Does
 
 The **Emotion Robot** observes your face through a camera stream, classifies your emotional state in real time using a neural network, and physically reacts:
 
 | Detected Emotion | Robot Behavior | Reasoning |
 |:---:|:---:|:---|
-| **Happy** | Drive **Forward** | Engagement — move closer |
-| **Sad / Angry / Fear** | Drive **Backward** | Avoidance — respect the mood |
-| **Neutral** | **Hold Position** | Observation state |
-| **Lost Target** | **Spin & Search** | Re-acquisition via Last Known Position |
+| 😊 **Happy** | Drive **Forward** | Engagement — move closer |
+| 😢 **Sad** / 😡 **Angry** / 😨 **Fear** | Drive **Backward** | Avoidance — respect the mood |
+| 😐 **Neutral** | **Hold Position** | Observation state |
+| ❓ **Lost Target** | **Spin & Search** | Re-acquisition via Last Known Position |
 
 <br/>
 
 ---
 
-## Credits & Attribution
+## 📌 Credits & Attribution
 
 This project is a **hardware-integrated fork** of the [Realtime Facial Emotion Analyzer](https://github.com/susantabiswas/realtime-facial-emotion-analyzer) by **Susanta Biswas**.
 
@@ -77,7 +77,7 @@ This project is a **hardware-integrated fork** of the [Realtime Facial Emotion A
 
 ---
 
-## Key Features
+## 🚀 Key Features
 
 <br/>
 
@@ -97,32 +97,32 @@ A **TCP-based video stream** (`libcamera → tcp://`) decouples capture from inf
 
 ---
 
-## Hardware Architecture
+## 🛠️ Hardware Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                   EMOTION ROBOT                     │
-│                                                     │
-│  ┌─────────────┐      ┌──────────────────────────┐  │
-│  │  Camera     │─────▶│   Raspberry Pi 5 (8GB)   │  │
-│  │  Module 3   │      │                          │  │
-│  └─────────────┘      │   • TensorFlow / Keras   │  │
-│                        │   • Emotion Classifier   │  │
-│  ┌─────────────┐      │   • TCP Stream Client    │  │
-│  │  Pi Power   │─────▶│   • Motor Logic          │  │
-│  │  Bank       │      └────────────┬─────────────┘  │
+┌──────────────────────────────────────────────────────┐
+│                   EMOTION ROBOT                      │
+│                                                      │
+│  ┌─────────────┐      ┌──────────────────────────┐   │
+│  │  Camera     │────▶│   Raspberry Pi 5 (8GB)    │  │
+│  │  Module 3   │      │                           │  │
+│  └─────────────┘      │   • TensorFlow / Keras    │  │
+│                       │   • Emotion Classifier    │  │
+│  ┌─────────────┐      │   • TCP Stream Client     │  │
+│  │  Pi Power   │────▶│   • Motor Logic           │  │
+│  │  Bank       │      └────────────┬─────────────┘   │
 │  └─────────────┘                   │                 │
 │                                    ▼                 │
-│  ┌─────────────┐      ┌──────────────────────────┐  │
-│  │  4× AA      │─────▶│   L298N H-Bridge Driver  │  │
-│  │  Battery    │      └────────────┬─────────────┘  │
+│  ┌─────────────┐      ┌──────────────────────────┐   │
+│  │  4× AA      │────▶│   L298N H-Bridge Driver   │  │
+│  │  Battery    │      └────────────┬─────────────┘   │
 │  └─────────────┘                   │                 │
 │                                    ▼                 │
 │                        ┌──────────────────────────┐  │
 │                        │  2-Wheel Differential    │  │
 │                        │  Drive + Swivel Caster   │  │
 │                        └──────────────────────────┘  │
-└─────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────┘
 ```
 
 | Component | Specification |
@@ -138,7 +138,7 @@ A **TCP-based video stream** (`libcamera → tcp://`) decouples capture from inf
 
 ---
 
-## Technical Deep-Dive
+## ⚙️ Technical Deep-Dive
 
 ### Coordinate Normalization
 
@@ -146,22 +146,15 @@ Raw camera coordinates caused a persistent **"Always Left" detection bug** — t
 
 The fix: normalize against the **detection width**, not the camera width.
 
-$$\text{Relative Position} = \frac{\text{Face Center}_x}{\text{Detection Width}}$$
+$$\text{Relative Position} = \frac{\text{Face Center} x}{\text{Detection Width}}$$
 
 This maps position to a `[0.0 → 1.0]` range regardless of resolution or resize factor, giving accurate left/center/right classification.
 
 <br/>
 
-### Diagnostic Tools
-
-The repo ships with `test_stream.py` — a lightweight utility to validate the TCP camera stream at `127.0.0.1:8888` **without loading the neural network**. Use it first to confirm your hardware pipeline before running the full system.
-
-<br/>
-
 ---
 
-## Setup & Execution
-<br/>
+## 🏃 Setup & Execution
 
 ### Step 1 — Clone the repository:
 
@@ -210,7 +203,7 @@ The robot will begin streaming, classifying emotions, and driving accordingly.
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 emotion-robot/
@@ -220,14 +213,14 @@ emotion-robot/
 ├── test_stream.py      # Diagnostic tool for TCP camera stream verification
 │
 └── models/
-    └──    # Pre-trained emotion classification weights
+    └── # Pre-trained emotion classification weights
 ```
 
 <br/>
 
 ---
 
-## License
+## 📜 License
 
 This project inherits the **MIT License** from the original repository by Susanta Biswas.
 See [`LICENSE`](LICENSE) for full copyright details and permissions.
