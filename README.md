@@ -1,32 +1,6 @@
 <div align="center">
 
-<br/>
-
-```
-███████╗███╗   ███╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗
-██╔════╝████╗ ████║██╔═══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
-█████╗  ██╔████╔██║██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║
-██╔══╝  ██║╚██╔╝██║██║   ██║   ██║   ██║██║   ██║██║╚██╗██║
-███████╗██║ ╚═╝ ██║╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║
-╚══════╝╚═╝     ╚═╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-██████╗  ██████╗ ██████╗  ██████╗ ████████╗
-██╔══██╗██╔═══██╗██╔══██╗██╔═══██╗╚══██╔══╝
-██████╔╝██║   ██║██████╔╝██║   ██║   ██║   
-██╔══██╗██║   ██║██╔══██╗██║   ██║   ██║   
-██║  ██║╚██████╔╝██████╔╝╚██████╔╝   ██║   
-╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝    ╚═╝   
-```
-
-### *An Autonomous Emotion-Driven Raspberry Pi 5 Mobile Platform*
-
-<br/>
-
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
-[![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-5-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white)](https://raspberrypi.org)
-[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
-
-<br/>
+### *Facial Emotion Based Robot; An Autonomous Emotion-Driven Raspberry Pi 5 Mobile Platform*
 
 > **A differential-drive robot that reads human emotions through Deep Learning and responds with physical movement — bridging high-level Computer Vision with low-level hardware control to exhibit genuinely "social" behavior.**
 
