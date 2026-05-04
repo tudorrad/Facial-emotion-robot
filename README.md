@@ -1,8 +1,8 @@
 <div align="center">
 
-### *Facial Emotion Based Robot; An Autonomous Emotion-Driven Raspberry Pi 5 Mobile Platform*
+### *Facial Emotion Robot; An Autonomous Emotion-Driven Raspberry Pi 5 Mobile Platform*
 
-> **A differential-drive robot that reads human emotions through Deep Learning and responds with physical movement — bridging high-level Computer Vision with low-level hardware control to exhibit genuinely "social" behavior.**
+> **Autonomous differential-drive robot built on Raspberry Pi 5 that classifies facial emotions in real time and responds with physical movements: approaching happiness, retreating from anger or sadness.**
 
 <br/>
 
