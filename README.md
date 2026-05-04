@@ -222,7 +222,3 @@ See [`LICENSE`](LICENSE) for full copyright details and permissions.
 <br/>
 
 ---
-
-<div align="center">
-
-**Developed by [Tudor Rădăcină]**
