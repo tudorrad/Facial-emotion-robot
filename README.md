@@ -1,220 +1,242 @@
-<!-- [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsusantabiswas%2Frealtime-facial-emotion-analyzer&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com) -->
+<div align="center">
 
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/susantabiswas/realtime-facial-emotion-analyzer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/susantabiswas/realtime-facial-emotion-analyzer/context:python)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8507a04fe1535a9c224a/maintainability)](https://codeclimate.com/github/susantabiswas/realtime-facial-emotion-analyzer/maintainability)
-![Tests](https://github.com/susantabiswas/FaceRecog/workflows/Tests/badge.svg)
-[![Build Status](https://app.travis-ci.com/susantabiswas/realtime-facial-emotion-analyzer.svg?branch=master)](https://app.travis-ci.com/susantabiswas/realtime-facial-emotion-analyzer)
-[![codecov](https://codecov.io/gh/susantabiswas/realtime-facial-emotion-analyzer/branch/master/graph/badge.svg?token=O7CRXABZEA)](https://codecov.io/gh/susantabiswas/realtime-facial-emotion-analyzer)
+<br/>
 
-
-
-# Realtime Emotion Analysis from facial Expressions
-Real-time Human Emotion Analysis From facial expressions. It uses a deep Convolutional Neural Network.
-The model used achieved an accuracy of 63% on the test data. The realtime analyzer assigns a suitable emoji for the current emotion. 
-
-There are 4 different face detectors for usage. Wrappers for video and webcam processing are provided for convenience.<br><br>
-
-This emotion recognition library is built with ease and customization in mind. There are numerous control parameters to control how you want to use the features, be it face detection on videos, or with a webcam.
-<br>
-
-## Table of Contents
-- [Sample Output](#sample-output)
-- [Architecture](#architecture)
-- [Setup](#setup)
-- [Project Structure](#project-structure)
-- [Usage](#usage)
-- [References](#references)
-
-# Sample Output
-
-## Processed Video
-<img src="data/media/output.gif"/><br>
-
-## Processed Images
-<img src="data/media/out3.jpg" height="320" /><img src="data/media/out4.jpg" height="320" />
-<img src="data/media/out5.jpg" height="320" /><img src="data/media/out6.jpg" height="320" />
-<img src="data/media/1.JPG" height="320" /><img src="data/media/2.JPG" height="320" />
-<img src="data/media/3.JPG" height="320" /><img src="data/media/4.JPG" height="320" />
-
-For emotion recognition, flow is:
-
-    media -> frame -> face detection -> Facial ROI -> Convolutional Neural Network -> Emotion 
-
-These are the major components:
-1. **Face Detection**: There are 4 different face detectors with different cropping options.
-2. **Emotion Recognition**: Responsible for handling emotion recognition related functionalities from an image.
-3. **Utilities**: Methods for handling image, video operations, validations, etc.
-
-<br>
-
-# Setup
-There are multiple ways to set this up.
-### Clone the repo and install dependencies.<br>
-```python
-git clone https://github.com/susantabiswas/realtime-facial-emotion-analyzer.git
-pip install -r requirements.txt
+```
+███████╗███╗   ███╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+██╔════╝████╗ ████║██╔═══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+█████╗  ██╔████╔██║██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║
+██╔══╝  ██║╚██╔╝██║██║   ██║   ██║   ██║██║   ██║██║╚██╗██║
+███████╗██║ ╚═╝ ██║╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║
+╚══════╝╚═╝     ╚═╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+██████╗  ██████╗ ██████╗  ██████╗ ████████╗
+██╔══██╗██╔═══██╗██╔══██╗██╔═══██╗╚══██╔══╝
+██████╔╝██║   ██║██████╔╝██║   ██║   ██║   
+██╔══██╗██║   ██║██╔══██╗██║   ██║   ██║   
+██║  ██║╚██████╔╝██████╔╝╚██████╔╝   ██║   
+╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝    ╚═╝   
 ```
 
-### Docker Image
-You can pull the docker image for this project and run the code there.<br>
-```docker pull susantabiswas/emotion-analyzer:latest```
+### *An Autonomous Emotion-Driven Raspberry Pi 5 Mobile Platform*
 
-### Dockerfile
-You can build the docker image from the docker file present in the repo.
+<br/>
 
-```docker build -t <name> .```
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
+[![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-5-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white)](https://raspberrypi.org)
+[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
 
+<br/>
 
-# Project Structure
+> **A differential-drive robot that reads human emotions through Deep Learning and responds with physical movement — bridging high-level Computer Vision with low-level hardware control to exhibit genuinely "social" behavior.**
+
+<br/>
+
+---
+
+</div>
+
+<br/>
+
+## 🧠 What It Does
+
+The **Emotion Robot** observes your face through a camera stream, classifies your emotional state in real time using a neural network, and physically reacts:
+
+| Detected Emotion | Robot Behavior | Reasoning |
+|:---:|:---:|:---|
+| 😊 **Happy** | ▶ Drive **Forward** | Engagement — move closer |
+| 😢 **Sad** · 😡 **Angry** · 😨 **Fear** | ◀ Drive **Backward** | Avoidance — respect the mood |
+| 😐 **Neutral** | ⏸ **Hold Position** | Observation state |
+| ❓ **Lost Target** | 🔄 **Spin & Search** | Re-acquisition via Last Known Position |
+
+<br/>
+
+---
+
+## 📌 Credits & Attribution
+
+This project is a **hardware-integrated fork** of the [Realtime Facial Emotion Analyzer](https://github.com/susantabiswas/realtime-facial-emotion-analyzer) by **Susanta Biswas**.
+
+<details>
+<summary><strong>Project Evolution</strong></summary>
+
+<br/>
+
+**Original Core**
+- Deep learning emotion classification pipeline using TensorFlow / Keras
+
+**Enhancements in This Fork**
+- 🦾 Physical mobility via **L298N Motor Driver** integration
+- ⚡ Optimized for **Raspberry Pi 5** via TCP camera streaming to bypass `libcamera` lag
+- 📍 **Coordinate normalization** to accurately track users across the X-axis
+- 🔁 **State-based search routines** using "Last Known Position" memory
+
+</details>
+
+<br/>
+
+---
+
+## 🚀 Key Features
+
+<br/>
+
+### 🎭 Affective Behavioral Mapping
+The robot's motion is directly driven by emotion — not scripted paths or obstacle maps, but live neural inference.
+
+### 🧭 Directional Memory
+The robot continuously classifies your position as **Left**, **Center**, or **Right** within its field of view, maintaining spatial context even between detections.
+
+### 🔍 Intelligent Recovery
+When the face is lost from frame, the robot **spins toward the last known position** rather than spinning blindly — dramatically improving re-acquisition speed.
+
+### ⚡ High-Speed Vision Pipeline
+A **TCP-based video stream** (`libcamera → tcp://`) decouples capture from inference, maintaining high FPS on the Raspberry Pi 5 without the latency penalty of direct `libcamera` calls.
+
+<br/>
+
+---
+
+## 🛠️ Hardware Architecture
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   EMOTION ROBOT                     │
+│                                                     │
+│  ┌─────────────┐      ┌──────────────────────────┐  │
+│  │  Camera     │─────▶│   Raspberry Pi 5 (8GB)   │  │
+│  │  Module 3   │      │                          │  │
+│  └─────────────┘      │   • TensorFlow / Keras   │  │
+│                        │   • Emotion Classifier   │  │
+│  ┌─────────────┐      │   • TCP Stream Client    │  │
+│  │  Pi Power   │─────▶│   • Motor Logic          │  │
+│  │  Bank       │      └────────────┬─────────────┘  │
+│  └─────────────┘                   │                 │
+│                                    ▼                 │
+│  ┌─────────────┐      ┌──────────────────────────┐  │
+│  │  4× AA      │─────▶│   L298N H-Bridge Driver  │  │
+│  │  Battery    │      └────────────┬─────────────┘  │
+│  └─────────────┘                   │                 │
+│                                    ▼                 │
+│                        ┌──────────────────────────┐  │
+│                        │  2-Wheel Differential    │  │
+│                        │  Drive + Swivel Caster   │  │
+│                        └──────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
 ```
 
-realtime-facial-emotion-analyzer/
-├── Dockerfile
-├── LICENSE
-├── README.md
-├── data
-│   ├── Ubuntu-R.ttf
-│   ├── emojis
-│   │   ├── angry.png
-│   │   ├── disgusted.png
-│   │   ├── fearful.png
-│   │   ├── happy.png
-│   │   ├── neutral.png
-│   │   ├── sad.png
-│   │   └── surprised.png
-│   ├── media
-│   │   ├── 1.JPG
-│   │   ├── 2.JPG
-│   │   ├── 3.JPG
-│   │   ├── 4.JPG
-│   │   └── model_plot.png
-│   └── sample
-│       ├── 1.jpg
-│       └── 2.jpg
-├── emotion_analyzer
-│   ├── emotion_detector.py
-│   ├── emotion_detector_base.py
-│   ├── exceptions.py
-│   ├── face_detection_dlib.py
-│   ├── face_detection_mtcnn.py
-│   ├── face_detection_opencv.py
-│   ├── face_detector.py
-│   ├── logger.py
-│   ├── media_utils.py
-│   ├── model_utils.py
-│   └── validators.py
-├── models
-│   ├── mmod_human_face_detector.dat
-│   ├── opencv_face_detector.pbtxt
-│   ├── opencv_face_detector_uint8.pb
-│   └── shape_predictor_5_face_landmarks.dat
-├── requirements.txt
-├── tests
-│   ├── conftest.py
-│   ├── test_face_detection_dlib.py
-│   ├── test_face_detection_mtcnn.py
-│   ├── test_face_detection_opencv.py
-│   └── test_media_utils.py
-├── training
-│   ├── data_prep.py
-│   ├── facial Emotions.ipynb
-│   └── preprocess.py
-└── video_main.py
+| Component | Specification |
+|:---|:---|
+| **Brain** | Raspberry Pi 5 — 8 GB |
+| **Muscle** | L298N Dual H-Bridge Motor Driver |
+| **Vision** | Raspberry Pi Camera Module 3 |
+| **Chassis** | 2-Wheel Differential Drive + Swivel Caster |
+| **Power (Logic)** | Dedicated Pi Power Bank |
+| **Power (Motors)** | 4× AA Battery Pack |
+
+<br/>
+
+---
+
+## ⚙️ Technical Deep-Dive
+
+### 📐 Coordinate Normalization
+
+Raw camera coordinates caused a persistent **"Always Left" detection bug** — the face's pixel X position was being compared against the full camera resolution, but the AI processes a resized frame (`0.3×` scale).
+
+The fix: normalize against the **detection width**, not the camera width.
+
+$$\text{Relative Position} = \frac{\text{Face Center}_x}{\text{Detection Width}}$$
+
+This maps position to a `[0.0 → 1.0]` range regardless of resolution or resize factor, giving accurate left/center/right classification.
+
+<br/>
+
+### 🔬 Diagnostic Tools
+
+The repo ships with `test_stream.py` — a lightweight utility to validate the TCP camera stream at `127.0.0.1:8888` **without loading the neural network**. Use it first to confirm your hardware pipeline before running the full system.
+
+<br/>
+
+---
+
+## 🏃 Setup & Execution
+
+### Prerequisites
+- Raspberry Pi 5 with Raspberry Pi OS (64-bit)
+- Raspberry Pi Camera Module 3 connected
+- Python 3.9+ with TensorFlow, OpenCV, RPi.GPIO
+
+<br/>
+
+### Step 1 — Start the Video Stream
+
+Open **Terminal 1** and launch the `libcamera` TCP listener:
+
+```bash
+libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:8888
 ```
 
-# Usage
+> `-t 0` runs indefinitely. `--listen` opens a TCP server on port `8888`.
 
-### Emotion Recognition
-Depending on the use case, whether to aim for accuracy and stability or speed etc., you can pick the face detector. Also, there are customization options inside face detectors to decide the facial ROI.
+<br/>
 
+### Step 2 — Run the Robot Logic
 
-### To analyze facial emotion using a webcam
-```python
-# Inside project root
-import video_main
+Open **Terminal 2** and launch the main affective tracking script:
 
-# You can pick a face detector depending on Acc/speed requirements
-emotion_recognizer = EmotionAnalysisVideo(
-                        face_detector="dlib",
-                        model_loc="models",
-                        face_detection_threshold=0.0,
-                    )
-emotion_recognizer.emotion_analysis_video(
-    video_path=None,
-    detection_interval=1,
-    save_output=False,
-    preview=True,
-    output_path="data/output.mp4",
-    resize_scale=0.5,
-)
+```bash
+python video_main.py
 ```
 
-### To analyze facial emotion using a video file
-```python
-# Inside project root
-import video_main
+The robot will begin streaming, classifying emotions, and driving accordingly.
 
-# You can pick a face detector depending on Acc/speed requirements
-emotion_recognizer = EmotionAnalysisVideo(
-                        face_detector="dlib",
-                        model_loc="models",
-                        face_detection_threshold=0.0,
-                    )
-emotion_recognizer.emotion_analysis_video(
-    video_path='data/sample/test.mp4',
-    detection_interval=1,
-    save_output=False,
-    preview=True,
-    output_path="data/output.mp4",
-    resize_scale=0.5,
-)
+<br/>
+
+> 💡 **Tip:** Run `python test_stream.py` first to verify the camera TCP connection is healthy before starting the full pipeline.
+
+<br/>
+
+---
+
+## 📂 Project Structure
+
+```
+emotion-robot/
+│
+├── video_main.py       # 🧠  Main loop — AI inference + behavioral logic
+├── motors.py           # ⚙️   Low-level GPIO control for L298N driver
+├── test_stream.py      # 🔬  Diagnostic tool for TCP camera stream verification
+│
+└── models/
+    └── *.h5 / *.json   # 🤖  Pre-trained emotion classification weights
 ```
 
-### Emotion recognition using an image
-```python
-# Inside project root
-from emotion_analyzer.media_utils import load_image_path
-from emotion_analyzer.emotion_detector import EmotionDetector
+<br/>
 
-emotion_detector = EmotionDetector(
-    model_loc="models",
-    face_detection_threshold=0.8,
-    face_detector="dlib",
-)
-# Load the test image
-img = load_image_path("data/sample/1.jpg")
-emotion, emotion_conf = emotion_detector.detect_facial_emotion(img)
-```
+---
 
+## 💡 Future Improvements
 
-There are 4 face detectors namely dlib (HOG, MMOD), MTCNN, OpenCV (CNN). 
-All the face detectors are based on a common abstract class and have a common detection interface **detect_faces(image)**.
+- [ ] **Depth Estimation** — Use bounding box area as a proxy for distance to modulate approach/retreat speed
+- [ ] **OLED Face Display** — Mirror the detected emotion on a small screen mounted to the chassis
+- [ ] **Ultrasonic Obstacle Avoidance** — Prevent collisions during search/approach routines
+- [ ] **Multi-face Priority** — Determine dominant face when multiple people are in frame
+- [ ] **Emotion History Smoothing** — Average predictions over N frames to reduce behavioral jitter
 
-```python
-# import the face detector you want, it follows absolute imports
-from emotion_analyzer.media_utils import load_image_path
-from emotion_analyzer.face_detection_dlib import FaceDetectorDlib
+<br/>
 
-face_detector = FaceDetectorDlib(model_type="hog")
-# Load the image in RGB format
-image = load_image_path("data/sample/1.jpg")
-# Returns a list of bounding box coordinates
-bboxes = face_detector.detect_faces(image)
-```
+---
 
+## 📜 License
 
-# Architecture
-![architecture](data/media/model_plot.png)<br>
-<br>
+This project inherits the **MIT License** from the original repository by Susanta Biswas.
+See [`LICENSE`](LICENSE) for full copyright details and permissions.
 
-# References
-The awesome work Davis E. King has done: 
-http://dlib.net/cnn_face_detector.py.html, 
-https://github.com/davisking/dlib-models<br>
-You can find more about MTCNN from here: https://github.com/ipazc/mtcnn
-<br>
-Dataset used was from Kaggle fer2013 Challenge [Challenges in Representation Learning: Facial Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
-<br>
-Emojis used were from https://emojiisland.com/
-<br>
-Ubuntu font license: https://ubuntu.com/legal/font-licence
+<br/>
+
+---
+
+<div align="center">
+
+**Developed by [Tudor Rădăcină]**
