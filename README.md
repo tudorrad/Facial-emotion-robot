@@ -163,14 +163,14 @@ The repo ships with `test_stream.py` — a lightweight utility to validate the T
 ## Setup & Execution
 <br/>
 
-### Step 1 — Clone the repository:**
+### Step 1 — Clone the repository:
 
 ```bash
 git clone https://github.com/tudorrad/Facial-emotion-robot.git
 cd Facial-emotion-robot
 ```
 
-### Step 2 — Install Dependencies:**
+### Step 2 — Install Dependencies:
 
 > It is recommended to use a virtual environment or Conda to avoid system conflicts.
 
