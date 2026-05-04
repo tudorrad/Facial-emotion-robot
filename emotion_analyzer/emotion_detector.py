@@ -149,7 +149,7 @@ class EmotionDetector(EmotionDetectorBase):
         total_sum = np.sum(model_output[0])
 
         for index, emotion in enumerate(EMOTIONS):
-            confidence = round(Decimal(model_output[0][index] / total_sum * 100), 2)
+            confidence = round(Decimal(float(model_output[0][index] / total_sum * 100)), 2)
             emotion_confidence[emotion] = confidence
 
         return detected_emotion, emotion_confidence

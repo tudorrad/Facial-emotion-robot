@@ -13,6 +13,8 @@ from typing import Dict, List
 
 import cv2
 import numpy as np
+import os
+import motors
 
 from emotion_analyzer.emotion_detector import EmotionDetector
 from emotion_analyzer.logger import LoggerFactory
@@ -51,6 +53,12 @@ class EmotionAnalysisVideo:
         emoji_loc: str = "data",
     ) -> None:
 
+        try:
+            motors.setup()
+            print("GPIO Pins Initialized Successfully")
+        except Exception as e:
+            print(f"Warning: Could not initialize motors: {e}")
+
         # construct the path to emoji folder
         self.emoji_path = os.path.join(emoji_loc, EmotionAnalysisVideo.emoji_foldername)
         # Load the emojis
@@ -77,13 +85,14 @@ class EmotionAnalysisVideo:
         # switching to webcam
         video_path = 0 if video_path is None else video_path
 
-        if not path_exists(video_path):
-            raise FileNotFoundError
+        #if not path_exists(video_path):
+            #raise FileNotFoundError
 
         cap, video_writer = None, None
 
         try:
-            cap = cv2.VideoCapture(video_path)
+            # FORCE TCP STREAM CONNECTION
+            cap = cv2.VideoCapture('tcp://127.0.0.1:8888', cv2.CAP_FFMPEG)
             # To save the video file, get the opencv video writer
             video_writer = get_video_writer(cap, output_path)
             frame_num = 1
@@ -91,10 +100,15 @@ class EmotionAnalysisVideo:
             t1 = time.time()
             logger.info("Enter q to exit...")
 
-            emotions = None
+            emotions = []
 
-            while True:
+            last_emotion = "neutral"
+
+            """while True:
                 status, frame = cap.read()
+                if not status:
+                    print("ERROR: Camera read failed! Status is False.")
+
                 if not status:
                     break
 
@@ -112,6 +126,20 @@ class EmotionAnalysisVideo:
                         # Detect emotion
                         emotions = self.emotion_detector.detect_emotion(smaller_frame)
 
+                        if emotions and len(emotions) > 0:
+                            current_emotion = emotions[0]['emotion']
+                            print(f">>> AI DECISION: {current_emotion}") # Check Terminal B for this!
+                            
+                            if current_emotion == "happy":
+                                motors.forward()
+                            elif current_emotion in ["sad", "angry", "fear"]:
+                                motors.backward()
+                            else:
+                                motors.stop()
+                        else:
+                            # No face detected in this check
+                            motors.stop()
+
                     # Annotate the current frame with emotion detection data
                     frame = self.annotate_emotion_data(emotions, frame, resize_scale)
 
@@ -125,6 +153,85 @@ class EmotionAnalysisVideo:
                         break
                 
                 except Exception as exc:
+                    raise exc
+                frame_num += 1"""
+            
+            #NEW WHILE LOOP
+            # Add this right before the while loop starts
+            last_emotion = "none"
+            print("--- AI LOOP STARTING ---")
+
+            last_emotion = "none"
+            last_direction = "clockwise"
+
+            while True:
+                status, frame = cap.read()
+                if not status:
+                    break
+
+                try:
+                    if video_path == 0:
+                        frame = cv2.flip(frame, 2)
+
+                    if frame_num % detection_interval == 0:
+                        # REMAINS ESSENTIAL: Resize for speed
+                        smaller_frame = convert_to_rgb(
+                            cv2.resize(frame, (0, 0), fx=resize_scale, fy=resize_scale)
+                        )
+                        
+                        # Detect emotions and store in local 'emotions' variable
+                        emotions = self.emotion_detector.detect_emotion(smaller_frame)
+
+                        if emotions and len(emotions) > 0:
+                            detection_width = smaller_frame.shape[1]
+
+                            bbox = emotions[0]['bbox']
+                            face_center_x = (bbox[0] + bbox[2]) / 2
+
+                            relative_pos = face_center_x / detection_width
+                            
+                            if relative_pos < 0.35:
+                                last_direction = "left"
+                            elif relative_pos > 0.65:
+                                last_direction = "right"
+                            else:
+                                last_direction = "center"
+
+                            print(f"DEBUG: Pos: {relative_pos:.2f} | Side: {last_direction}")
+                            
+                            current_emotion = emotions[0]['emotion'].lower()
+                            if current_emotion != last_emotion:
+                                print(f">>> TARGET FOUND: {current_emotion} at {last_direction}")
+                                last_emotion = current_emotion
+                                
+                                if current_emotion == "happy":
+                                    motors.forward(speed=80)
+                                elif current_emotion in ["sad", "angry", "fear"]:
+                                    motors.backward(speed=80)
+                                else:
+                                    motors.stop()
+                        else:
+                            if last_emotion != "searching":
+                                print(f">>> TARGET LOST: Spinning {last_direction} to recover...")
+                                last_emotion = "searching"
+
+                            if last_direction == "left":
+                                motors.spin_left(speed=60)
+                            else:
+                                motors.spin_right(speed=60)
+
+                    # Draw the square using the 'emotions' variable
+                    frame = self.annotate_emotion_data(emotions, frame, resize_scale)
+
+                    if preview:
+                        cv2.imshow("Preview", cv2.resize(frame, (680, 480)))
+
+                    if cv2.waitKey(1) & 0xFF == ord("q"):
+                        break
+                
+                except Exception as exc:
+                    print(f"CRITICAL ERROR in loop: {exc}")
+                    motors.stop()
                     raise exc
                 frame_num += 1
 
