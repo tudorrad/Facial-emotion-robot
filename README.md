@@ -170,7 +170,18 @@ The repo ships with `test_stream.py` — a lightweight utility to validate the T
 - External Power Supply for the Pi (Power Bank, Li-Po battery or similar) and 4x AA Battery pack (or similar) to power the motors independently from the Pi
 <br/>
 
-### Step 1 — Start the Video Stream
+Software Installation
+Step 1 — Clone the repository:
+bashgit clone https://github.com/tudorrad/Facial-emotion-robot.git
+cd Facial-emotion-robot
+Step 2 — Install Dependencies:
+
+It is recommended to use a virtual environment or Conda to avoid system conflicts.
+
+bashpip install -r requirements.txt
+<br/>
+
+### Step 3 — Start the Video Stream
 
 Open **Terminal 1** and launch the `libcamera` TCP listener:
 
@@ -182,7 +193,7 @@ libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:8888
 
 <br/>
 
-### Step 2 — Run the Robot Logic
+### Step 4 — Run the Robot Logic
 
 Open **Terminal 2** and launch the main affective tracking script:
 
