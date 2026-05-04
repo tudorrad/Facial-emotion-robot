@@ -164,9 +164,10 @@ The repo ships with `test_stream.py` — a lightweight utility to validate the T
 
 ### Prerequisites
 - Raspberry Pi 5 with Raspberry Pi OS (64-bit)
-- Raspberry Pi Camera Module 3 connected
-- Python 3.9+ with TensorFlow, OpenCV, RPi.GPIO
-
+- Raspberry Pi Camera Module 3 
+- L298N Dual Motor Driver
+- 2x DC Geared Motors
+- External Power Supply for the Pi (Power Bank, Li-Po battery or similar) and 4x AA Battery pack (or similar) to power the motors independently from the Pi
 <br/>
 
 ### Step 1 — Start the Video Stream
