@@ -107,22 +107,22 @@ A **TCP-based video stream** (`libcamera → tcp://`) decouples capture from inf
 │  │  Camera     │─────▶│   Raspberry Pi 5 (8GB)   │  │
 │  │  Module 3   │      │                          │  │
 │  └─────────────┘      │   • TensorFlow / Keras   │  │
-│                        │   • Emotion Classifier   │  │
+│                        │   • Emotion Classifier  │  │
 │  ┌─────────────┐      │   • TCP Stream Client    │  │
 │  │  Pi Power   │─────▶│   • Motor Logic          │  │
 │  │  Bank       │      └────────────┬─────────────┘  │
 │  └─────────────┘                   │                 │
 │                                    ▼                 │
-│  ┌─────────────┐      ┌──────────────────────────┐  │
+│  ┌─────────────┐      ┌──────────────────────────┐   │
 │  │  4× AA      │─────▶│   L298N H-Bridge Driver  │  │
-│  │  Battery    │      └────────────┬─────────────┘  │
+│  │  Battery    │      └────────────┬─────────────┘   │
 │  └─────────────┘                   │                 │
 │                                    ▼                 │
 │                        ┌──────────────────────────┐  │
 │                        │  2-Wheel Differential    │  │
 │                        │  Drive + Swivel Caster   │  │
 │                        └──────────────────────────┘  │
-└─────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────┘
 ```
 
 | Component | Specification |
@@ -209,24 +209,10 @@ emotion-robot/
 ├── test_stream.py      # 🔬  Diagnostic tool for TCP camera stream verification
 │
 └── models/
-    └── *.h5 / *.json   # 🤖  Pre-trained emotion classification weights
+    └──   # 🤖  Pre-trained emotion classification weights
 ```
 
 <br/>
-
----
-
-## 💡 Future Improvements
-
-- [ ] **Depth Estimation** — Use bounding box area as a proxy for distance to modulate approach/retreat speed
-- [ ] **OLED Face Display** — Mirror the detected emotion on a small screen mounted to the chassis
-- [ ] **Ultrasonic Obstacle Avoidance** — Prevent collisions during search/approach routines
-- [ ] **Multi-face Priority** — Determine dominant face when multiple people are in frame
-- [ ] **Emotion History Smoothing** — Average predictions over N frames to reduce behavioral jitter
-
-<br/>
-
----
 
 ## 📜 License
 
